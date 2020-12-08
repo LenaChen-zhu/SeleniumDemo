@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--suit是测试套件，thread-count设置并发数，paraller针对方法进行并发 -->
+<suite name="Suite1" thread-count="1" parallel="methods">
+    <test name="LoginTest" preserve-order="false">
+        <classes>
+            <class name="com.webqq.RegisterTest">
+                <methods>
+                    <include name="RegisterTest"/>
+                </methods>
+            </class>
+
+            <class name="com.webqq.LoginTest">
+                <methods>
+                    <include name="loginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
