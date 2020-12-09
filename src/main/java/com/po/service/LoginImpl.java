@@ -20,8 +20,7 @@ public class LoginImpl implements LoginService{
     private WebDriverWait wait;
 
     public String Login(WebDriver driver,WebDriverWait wait,String webDriverName,int time,String userName, String password) throws Exception {
-        driver = driverUtil.getWebDriver(webDriverName);
-        wait = waitUtils.waitTime(driver,time);
+        loginPage = new LoginPage();
         driver.switchTo().frame("login_frame");
         driver.findElement(loginPage.getUserPwd).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginPage.getEmailName));
