@@ -2,7 +2,7 @@ package com.webqq;
 
 import com.po.service.LoginImpl;
 import com.po.util.DriverUtil;
-import com.po.util.WaitUtils;
+import com.po.util.FindElementsUtil;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,9 +21,9 @@ public class LoginTest {
     @BeforeTest
     public void initBrowser() throws Exception {
         DriverUtil driverUtil = new DriverUtil();
-        driver = driverUtil.getWebDriver("Chrome");
-        WaitUtils waitUtils = new WaitUtils();
-        wait = waitUtils.waitTime(driver,5);
+//        driver = driverUtil.getWebDriver("Chrome");
+        FindElementsUtil waitUtils = new FindElementsUtil();
+//        wait = waitUtils.waitTime(driver,5);
     }
 
     //    根据传入的参数打开指定的浏览器,并进入qq邮箱首页
