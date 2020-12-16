@@ -1,32 +1,53 @@
 package com.po.util;
 
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
+@Log4j2
 public class DriverUtil {
-    private WebDriver webDriver;
+    private static WebDriver driver = null;
     //简单单例模式
     //根据所传入不同的浏览器名称，来配置浏览器，
-    public WebDriver getWebDriver(String webDriverName)throws Exception {
-        if(webDriverName.equals("Firefox")){
-            System.setProperty("webdriver.gecko.driver","drivers/geckodriver.exe");
-            webDriver = new FirefoxDriver();
-        }else if(webDriverName.equals("Chrome")){
-            System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
-            webDriver = new ChromeDriver();
-        }else if(webDriverName.equals("IE")){
-            System.setProperty("webdriver.ie.driver","drivers/IEDriverServer.exe");
-            webDriver = new InternetExplorerDriver();
-        }else if(webDriverName.equals("PhantomJs")){
-            System.setProperty("phantomjs.binary.path","drivers/phantomjs.exe");
-            webDriver = new PhantomJSDriver();
-        }else {
-            throw new Exception("没有该浏览器打开方法");
+    public static WebDriver open(String browser){
+        try
+        {
+            if(browser.equals("Firefox")){
+                System.setProperty("webdriver.gecko.driver","drivers/geckodriver.exe");
+                driver = new FirefoxDriver();
+            }else if(browser.equals("Chrome")){
+                System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
+                driver = new ChromeDriver();
+            }else if(browser.equals("IE")){
+                System.setProperty("webdriver.ie.driver","drivers/IEDriverServer.exe");
+                driver = new InternetExplorerDriver();
+            }else if(browser.equals("PhantomJs")){
+                System.setProperty("phantomjs.binary.path","drivers/phantomjs.exe");
+                driver = new PhantomJSDriver();
+            }
+
+        }catch (Exception e){
+            log.error("没有匹配的浏览器");
+            e.printStackTrace();
         }
-        return webDriver;
+        return driver;
+    }
+
+    //关闭浏览器及其进程
+    public static void closeAll(){
+        if(driver != null)
+            driver.quit();
+    }
+
+    //关闭当前浏览器
+    public static void close(){
+        if(driver != null)
+            driver.close();
     }
 
 }
