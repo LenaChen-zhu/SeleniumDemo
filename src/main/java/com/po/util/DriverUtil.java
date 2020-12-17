@@ -1,6 +1,7 @@
 package com.po.util;
 
 import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.slf4j.LoggerFactory;
 
-@Log4j2
+
 public class DriverUtil {
     private static WebDriver driver = null;
     //简单单例模式
@@ -32,7 +34,7 @@ public class DriverUtil {
             }
 
         }catch (Exception e){
-            log.error("没有匹配的浏览器");
+            System.out.println("异常信息为"+e.getMessage());
             e.printStackTrace();
         }
         return driver;

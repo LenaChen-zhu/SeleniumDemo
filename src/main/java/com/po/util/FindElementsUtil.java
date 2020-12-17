@@ -12,23 +12,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-@Log4j2
 public class FindElementsUtil {
-    private static WebElement element = null;
-    private static List<WebElement> elementList = null;
+    private static WebElement element;
+    private static List<WebElement> elementList;
 
     //查找单个元素，并等待指定时间
     public static WebElement findElement(WebDriver driver, long timeout, final By by){
         element = new WebDriverWait(driver,timeout).until(new ExpectedCondition<WebElement>(){
             @NullableDecl
             public WebElement apply(@NullableDecl WebDriver driver) {
-                try {
+                try{
                     return driver.findElement(by);
                 } catch (StaleElementReferenceException var3) {
-                    log.error("无法找到该元素，没有driver");
+                    System.out.println("异常信息为："+var3.getMessage());
                     return null;
                 }
-            };
+            }
         });
         return element;
     }
@@ -41,10 +40,10 @@ public class FindElementsUtil {
                 try {
                     return driver.findElements(by);
                 } catch (StaleElementReferenceException var3) {
-                    log.error("无法找到该元素，没有driver");
+                    System.out.println("异常信息为："+var3.getMessage());
                     return null;
                 }
-            };
+            }
         });
         return elementList;
     }
