@@ -24,6 +24,5 @@ public class ActionsUtilTest {
         }finally {
             DriverUtil.closeAll();
         }
-
     }
 }
