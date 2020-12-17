@@ -16,7 +16,7 @@ public class ActionsUtilTest {
             ActionsUtil.getURL(driver,url);
             ActionsUtil.sendText(driver,3, By.id("kw"),"Selenium");
             ActionsUtil.clickEvent(driver,3,By.id("su"));
-            String text = ActionsUtil.getLinkText(driver,3,By.linkText("MeterSphere - 开源自动化测试平台"));
+            String text = ActionsUtil.getText(driver,3,By.linkText("MeterSphere - 开源自动化测试平台"));
             Assert.assertEquals("MeterSphere - 开源自动化测试平台",text);
         }catch (Exception e){
             System.out.println("actionUtil错误"+e.getMessage());

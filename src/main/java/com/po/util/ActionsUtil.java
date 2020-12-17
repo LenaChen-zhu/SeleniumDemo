@@ -25,10 +25,12 @@ public class ActionsUtil {
         FindElementsUtil.findElement(driver,timeout,by).click();
     }
 
-    //文本超链接
-    public static String getLinkText(WebDriver driver,long timeout,By by){
+    //获取文本
+    public static String getText(WebDriver driver,long timeout,By by){
         return FindElementsUtil.findElement(driver,timeout,by).getText();
     }
+
+
 
 
 }
