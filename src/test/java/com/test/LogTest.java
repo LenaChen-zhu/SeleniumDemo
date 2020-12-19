@@ -1,6 +1,7 @@
 package com.test;
 
 
+import com.po.util.DateFormatUtil;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
@@ -25,5 +26,12 @@ public class LogTest {
     public void testErrorMsg(){
         logger.error("log输出error信息");
     }
+
+    @Test
+    public void testDateFormat(){
+        System.out.println("日期为:"+DateFormatUtil.getDate());
+
+    }
+
 
 }
