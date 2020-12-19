@@ -1,9 +1,6 @@
 package com.po.util;
 
-import jdk.nashorn.internal.runtime.logging.Logger;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class DriverUtil {
+    private static Logger logger = Logger.getLogger(DriverUtil.class);
     private static WebDriver driver = null;
     //简单单例模式
     //根据所传入不同的浏览器名称，来配置浏览器，
@@ -34,7 +32,7 @@ public class DriverUtil {
             }
 
         }catch (Exception e){
-            System.out.println("异常信息为"+e.getMessage());
+            logger.info("异常信息为"+e.getMessage());
             e.printStackTrace();
         }
         return driver;

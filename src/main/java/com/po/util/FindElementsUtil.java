@@ -1,6 +1,6 @@
 package com.po.util;
 
-import lombok.extern.log4j.Log4j2;
+import org.apache.log4j.Logger;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class FindElementsUtil {
+    private static Logger logger = Logger.getLogger(DriverUtil.class);
     private static WebElement element;
     private static List<WebElement> elementList;
 
@@ -24,7 +25,7 @@ public class FindElementsUtil {
                 try{
                     return driver.findElement(by);
                 } catch (StaleElementReferenceException var3) {
-                    System.out.println("异常信息为："+var3.getMessage());
+                    logger.info("异常信息为："+var3.getMessage());
                     return null;
                 }
             }
@@ -40,7 +41,7 @@ public class FindElementsUtil {
                 try {
                     return driver.findElements(by);
                 } catch (StaleElementReferenceException var3) {
-                    System.out.println("异常信息为："+var3.getMessage());
+                    logger.info("异常信息为："+var3.getMessage());
                     return null;
                 }
             }

@@ -1,6 +1,7 @@
 package com.po.util;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,12 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActionsUtil {
+    private static Logger logger = Logger.getLogger(ActionsUtil.class);
+
     //打开url网址
     public static void getURL(WebDriver driver,String url){
         if(!StringUtils.isEmpty(url)){
             driver.get(url);
         }else {
-            System.out.println("url地址为空");;
+            logger.error("url地址为空");
         }
     }
 
