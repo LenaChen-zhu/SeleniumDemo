@@ -31,6 +31,6 @@ public class DateFormatUtil {
     public static String getDate(){
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
-        return simpleDateFormat.toString();
+        return simpleDateFormat.format(date);
     }
 }
