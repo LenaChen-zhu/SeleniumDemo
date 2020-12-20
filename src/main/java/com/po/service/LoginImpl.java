@@ -2,7 +2,7 @@ package com.po.service;
 
 import com.po.page.LoginPage;
 import com.po.util.DriverUtil;
-import com.po.util.WaitUtils;
+import com.po.util.FindElementsUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +16,7 @@ public class LoginImpl implements LoginService{
     private LoginPage loginPage;
     private DriverUtil driverUtil;
     private WebDriver driver;
-    private WaitUtils waitUtils;
+    private FindElementsUtil waitUtils;
     private WebDriverWait wait;
 
     public String Login(WebDriver driver,WebDriverWait wait,String webDriverName,int time,String userName, String password) throws Exception {
